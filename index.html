@@ -1,349 +1,349 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rock9.com — Register & Get AUD 5</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rock9 | Claim Bonus</title>
 <style>
 :root{
-  --bg:#360904;
-  --gold:#F9C220;
-  --gold2:#F8E7B7;
-  --orange:#D74A09;
+  --bg:#0e0907;
+  --panel:#16110e;
+  --line:rgba(255,255,255,0.08);
+  --text:#f6efe6;
+  --muted:rgba(246,239,230,0.7);
+  --gold:#f3bf53;
+  --red:#b91d14;
+  --radius:28px;
 }
 
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  margin:0;
-  color:var(--gold2);
-  background:
-    radial-gradient(900px 500px at 20% 0%, rgba(215,74,9,.5), transparent 60%),
-    radial-gradient(900px 500px at 85% 25%, rgba(249,194,32,.35), transparent 55%),
-    linear-gradient(180deg, #1a0403 0%, var(--bg) 40%, #120202 100%);
-  overflow-x:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#0a0604,#120c09);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  overflow:hidden;
+  position:relative;
 }
 
-/* ===== COIN RAIN ===== */
 .coin-rain{
   position:fixed;
   inset:0;
-  overflow:hidden;
   pointer-events:none;
+  overflow:hidden;
   z-index:0;
 }
+
 .coin{
   position:absolute;
-  top:-80px;
+  top:-120px;
   width:22px;
   height:22px;
   border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold) 45%, var(--orange) 95%);
-  box-shadow:0 0 10px rgba(249,194,32,.6);
-  animation: fall linear infinite;
-  opacity:.9;
-}
-@keyframes fall{
-  0%{ transform: translateY(0) rotate(0deg); }
-  100%{ transform: translateY(115vh) rotate(720deg); }
+  background:radial-gradient(circle at 30% 30%, #ffe7a3 0%, #f3bf53 45%, #c98512 100%);
+  box-shadow:0 0 12px rgba(243,191,83,0.45);
+  animation:fall linear infinite;
+  opacity:0.9;
 }
 
-/* ===== LAYOUT ===== */
+.coin::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.35);
+}
+
+@keyframes fall{
+  0%{transform:translateY(-120px) rotate(0deg);opacity:0}
+  10%{opacity:0.95}
+  100%{transform:translateY(120vh) rotate(360deg);opacity:0.2}
+}
+
+.top-popup{
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:5;
+  width:min(340px, calc(100% - 28px));
+  background:rgba(28, 28, 30, 0.88);
+  border:1px solid rgba(255,255,255,0.07);
+  color:#ffffff;
+  padding:10px 12px;
+  border-radius:16px;
+  box-shadow:0 14px 30px rgba(0,0,0,0.28);
+  backdrop-filter:blur(16px) saturate(135%);
+  -webkit-backdrop-filter:blur(16px) saturate(135%);
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  animation:slideDown 0.45s ease;
+}
+
+.top-popup .gold{
+  font-weight:900;
+}
+
+.top-popup .close-popup{
+  background:none;
+  border:none;
+  color:rgba(255,255,255,0.48);
+  font-size:15px;
+  margin-left:2px;
+  cursor:pointer;
+  line-height:1;
+  padding:0;
+}
+
+.notification-icon{
+  width:28px;
+  height:28px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#d73725,#a5160f);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:900;
+  color:#fff;
+  flex:0 0 28px;
+  box-shadow:0 6px 14px rgba(215,55,37,0.24);
+}
+
+.notification-body{
+  min-width:0;
+  flex:1;
+}
+
+.notification-head{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:2px;
+}
+
+.notification-app{
+  font-size:12px;
+  font-weight:700;
+  color:rgba(255,255,255,0.92);
+}
+
+.notification-time{
+  font-size:11px;
+  color:rgba(255,255,255,0.5);
+  margin-left:auto;
+}
+
+.notification-message{
+  font-size:12px;
+  line-height:1.35;
+  color:rgba(255,255,255,0.86);
+}
+
+@keyframes slideDown{
+  0%{opacity:0;transform:translateX(-50%) translateY(-14px)}
+  100%{opacity:1;transform:translateX(-50%) translateY(0)}
+}
+
 .wrap{
-  max-width:980px;
-  margin:auto;
-  padding:10px 16px 46px;
+  width:min(980px,100%);
   position:relative;
-  z-index:2;
+  z-index:1;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:32px;
+  overflow:hidden;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.poster img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.content{
+  padding:48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.brand{
+  font-size:13px;
+  letter-spacing:1px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(42px,6vw,72px);
+  line-height:1.05;
+  font-weight:900;
+  margin-bottom:18px;
   text-align:center;
 }
 
-/* LOGO */
-.brandLogo{
-  width:min(520px, 92vw);
-  height:auto;
+.headline{
   display:block;
-  margin:0 auto -6px; /* tight with button/title */
-  filter: drop-shadow(0 18px 35px rgba(0,0,0,.55));
 }
 
-/* BUTTON (clean premium gold) */
-.whBtn{
+.headline strong{
+  font-weight:900;
+}
+
+.headline .row{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:0.35em;
+  white-space:nowrap;
+  margin:6px 0;
+}
+
+.headline .bottom{
+  font-size:1.25em;
+}
+
+.gold{
+  color:var(--gold);
+}
+
+.big{
+  font-size:inherit;
+}
+
+.btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  text-decoration:none;
-  font-weight:1000;
   padding:16px 24px;
-  border-radius:22px;
-  border:1px solid rgba(248,231,183,.40);
-  color:#2b1600;
-  font-size:15px;
-  margin:10px 0 14px;
-  background:
-    radial-gradient(120% 180% at 50% 0%,
-      rgba(248,231,183,.95),
-      rgba(249,194,32,.95) 45%,
-      rgba(215,74,9,.25) 100%);
-  box-shadow:
-    0 20px 50px rgba(249,194,32,.35),
-    inset 0 1px 0 rgba(255,255,255,.35);
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-}
-.whBtn:hover{
-  transform: translateY(-2px);
-  box-shadow:
-    0 28px 70px rgba(249,194,32,.45),
-    inset 0 1px 0 rgba(255,255,255,.40);
-}
-.whBtn:active{ transform: translateY(1px); filter: brightness(.98); }
-
-@keyframes softPulse{
-  0%,100%{ filter: drop-shadow(0 0 0 rgba(249,194,32,0)); }
-  50%{ filter: drop-shadow(0 0 14px rgba(249,194,32,.22)); }
-}
-.whBtn{ animation: softPulse 2.8s ease-in-out infinite; }
-
-/* TITLE */
-.heroTitle{
-  margin:0;
-  line-height:1.02;
-  font-weight:1000;
-  letter-spacing:.4px;
-  font-size:26px;
-  text-transform:uppercase;
-  background:linear-gradient(180deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.heroSub{
-  margin:4px 0 12px;
-  color:rgba(248,231,183,.85);
-  font-size:14px;
-}
-
-/* Poster */
-.posterCard{
-  margin:0 auto 14px;
-  max-width:820px;
-  border-radius:22px;
-  overflow:hidden;
-  border:1px solid rgba(248,231,183,.20);
-  background:rgba(0,0,0,.25);
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-.posterImg{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-/* CTA Card */
-.card{
-  max-width:820px;
-  margin:0 auto;
-  background:rgba(0,0,0,.25);
-  border:1px solid rgba(248,231,183,.25);
-  border-radius:22px;
-  padding:18px 16px 16px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-.points{
-  margin:0 0 14px;
-  padding:0;
-  list-style:none;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-}
-.points li{
-  font-size:13px;
-  padding:8px 10px;
-  border-radius:14px;
-  border:1px solid rgba(248,231,183,.16);
-  background:rgba(0,0,0,.18);
-  color:rgba(248,231,183,.90);
-}
-.small{
-  font-size:11px;
-  margin-top:10px;
-  opacity:.75;
-  color:rgba(248,231,183,.75);
-}
-
-/* ===== SINGLE TOAST (TOP CENTER) ===== */
-.live-toasts{
-  position: fixed;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  pointer-events: none;
-}
-.toast{
-  width: min(460px, calc(100vw - 24px));
-  padding: 8px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(248,231,183,.22);
-  background: linear-gradient(180deg, rgba(0,0,0,.62), rgba(0,0,0,.25));
-  box-shadow: 0 18px 45px rgba(0,0,0,.55);
-  backdrop-filter: blur(6px);
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 8px;
-  align-items: center;
-  animation: fadeIn .3s ease;
-}
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(-8px);}
-  to{opacity:1; transform:translateY(0);}
-}
-.coinBadge{
-  width:34px;
-  height:34px;
-  border-radius:12px;
-  background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold) 45%, var(--orange) 95%);
-  box-shadow:0 0 12px rgba(249,194,32,.20);
-}
-.toastTitleRow{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.toastTitle{
-  font-weight:900;
-  font-size:12px;
-  margin:0;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.toastTime{
-  font-size:10px;
-  opacity:.7;
-  margin:0;
-  flex:0 0 auto;
-}
-.toastSub{
-  margin:1px 0 0;
-  font-size:11px;
-  opacity:.82;
-}
-.tagLive{
-  font-size:9px;
-  padding:2px 5px;
   border-radius:999px;
-  background:rgba(215,74,9,.25);
-  margin-left:4px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:15px;
+  background:linear-gradient(180deg,#d73725,#a5160f);
+  color:#fff;
 }
 
-@media (max-width: 420px){
-  .heroTitle{font-size:24px;}
-  .whBtn{width:100%; max-width:820px;}
+.note{
+  font-size:13px;
+  color:rgba(255,255,255,0.5);
+  margin-top:16px;
+  text-align:center;
+  width:100%;
+}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+  .poster{max-height:420px}
+  .content{padding:30px 22px}
+  .btn{width:100%}
 }
 </style>
 </head>
-
 <body>
-<div class="coin-rain" id="coinRain" aria-hidden="true"></div>
-<div class="live-toasts" id="liveToasts" aria-hidden="true"></div>
+<div class="coin-rain" aria-hidden="true">
+  <span class="coin" style="left:4%;animation-duration:8s;animation-delay:0s"></span>
+  <span class="coin" style="left:10%;animation-duration:10s;animation-delay:1s;width:18px;height:18px"></span>
+  <span class="coin" style="left:18%;animation-duration:7.5s;animation-delay:2s"></span>
+  <span class="coin" style="left:26%;animation-duration:9s;animation-delay:0.5s;width:26px;height:26px"></span>
+  <span class="coin" style="left:34%;animation-duration:11s;animation-delay:1.8s"></span>
+  <span class="coin" style="left:42%;animation-duration:8.5s;animation-delay:2.5s;width:20px;height:20px"></span>
+  <span class="coin" style="left:50%;animation-duration:9.5s;animation-delay:0.8s"></span>
+  <span class="coin" style="left:58%;animation-duration:7.8s;animation-delay:2.2s;width:24px;height:24px"></span>
+  <span class="coin" style="left:66%;animation-duration:10.5s;animation-delay:1.3s"></span>
+  <span class="coin" style="left:74%;animation-duration:8.8s;animation-delay:0.2s;width:19px;height:19px"></span>
+  <span class="coin" style="left:82%;animation-duration:9.8s;animation-delay:1.5s"></span>
+  <span class="coin" style="left:90%;animation-duration:7.2s;animation-delay:2.8s;width:25px;height:25px"></span>
+</div>
+
+<div class="top-popup" id="topPopup">
+  <div class="notification-icon">R9</div>
+  <div class="notification-body">
+    <div class="notification-head">
+      <span class="notification-app">rock-9.com</span>
+      <span class="notification-time">now</span>
+    </div>
+    <div class="notification-message" id="popupText">Jason just topped up <span class="gold">$50</span> and claimed <span class="gold">$100</span></div>
+  </div>
+  <button class="close-popup" id="closePopup" aria-label="Close">×</button>
+</div>
 
 <div class="wrap">
-  <!-- MUST exist in same folder as index.html -->
-  <img class="brandLogo" src="Logo-Rectangle.png" alt="Rock9 Logo">
-
-  <!-- Button above title (as you requested) -->
-  <a id="waBtnTop" class="whBtn" href="#" target="_blank" rel="noopener">
-   Register & Get AUD 5
-  </a>
-
-  <h1 class="heroTitle">Register Now & Get AUD 5</h1>
-  <div class="heroSub">Tap Register & Get AUD 5 Now — support will help you register and claim your AUD 5 reward.</div>
-
-  <!-- Poster (upload this image into repo) -->
-  <div class="posterCard">
-    <img class="posterImg" src="register_get_aud5_001.jpg" alt="Register & Get AUD 5 Poster"
-         onerror="this.style.display='none'; this.parentElement.style.display='none';">
-  </div>
-
   <div class="card">
-    <ul class="points">
-      <li>✅ Fast Registration Help</li>
-      <li>✅ Step-by-step Guide</li>
-      <li>✅ Quick Reply Support</li>
-    </ul>
-    <div class="small">ROCK9.com Official</div>
+    <div class="grid">
+      <div class="poster">
+        <img src="1002509001.png" alt="Rock9 Bonus" />
+      </div>
+
+      <div class="content">
+        <div class="brand">ROCK-9.COM Casino Bonus</div>
+
+        <h1 class="headline">
+          <div class="row top"><strong>Top Up <span class="gold">$50</span></strong></div>
+          <div class="row bottom"><strong>Get <span class="gold big">$100</span></strong></div>
+        </h1>
+
+        <a class="btn" href="https://wa.me/61411635156?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%20%24100%20bonus." target="_blank" id="claimBtn">
+          Claim Now
+        </a>
+
+        <p class="note">ROCK-9.COM Official</p>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-/* =========================
-   WhatsApp + Auto Redirect (5s)
-========================= */
-const WA_NUMBER = "61411635156"; // CHANGE THIS (no +)
-const msg = "Hi Rock9.com, I want to register and claim AUD 5. Please help me sign up.";
-const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+const whatsappUrl = "https://wa.me/61411635156?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%20%24100%20bonus.";
+document.getElementById('claimBtn').href = whatsappUrl;
 
-const waBtn = document.getElementById("waBtnTop");
-waBtn.href = waLink;
-
-let userClicked = false;
-waBtn.addEventListener("click", () => { userClicked = true; });
-
-setTimeout(() => {
-  if (!userClicked) window.location.href = waLink;
+setTimeout(function(){
+  window.location.href = whatsappUrl;
 }, 5000);
 
-/* =========================
-   Coin Rain
-========================= */
-const rain = document.getElementById("coinRain");
-function createCoin(){
-  const c = document.createElement("div");
-  c.className = "coin";
-  c.style.left = Math.random() * 100 + "vw";
-  c.style.animationDuration = (3 + Math.random() * 4) + "s";
-  c.style.opacity = (0.45 + Math.random() * 0.5).toFixed(2);
-  const size = (14 + Math.random() * 24).toFixed(0) + "px";
-  c.style.width = c.style.height = size;
-  rain.appendChild(c);
-  setTimeout(() => c.remove(), 7000);
+const popup = document.getElementById('topPopup');
+const closePopup = document.getElementById('closePopup');
+const popupText = document.getElementById('popupText');
+
+const names = [
+  'Jason', 'Daniel', 'Ryan', 'Jessica', 'Marcus', 'Yoyo', 'Ethan', 'Chris',
+  'Alex', 'Justin', 'Nathan', 'Tiffany', 'Aaron', 'Mia', 'Adrian', 'Leon',
+  'Adam', 'Joshua', 'Samuel', 'Jayden', 'Sandra', 'Kathy', 'Samantha', 'Shyann'
+];
+
+function randomName() {
+  return names[Math.floor(Math.random() * names.length)];
 }
-setInterval(createCoin, 180);
 
-/* =========================
-   Single Toast + Timestamp
-========================= */
-const container = document.getElementById("liveToasts");
-const names = ["Zane","Ives","Victoria","Joseph","Hayden","Angelina","Neville","Charli","Jesse","Jageurs","Sean","Charlotte","Julian","Rebecca","Makayla"];
-const amounts = ["AUD 5","AUD 5","AUD 5","AUD 5"]; // keep consistent to match ad
-
-function mask(n){ return n.slice(0,2) + "***"; }
-function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
-function now(){ return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
-
-function showToast(){
-  container.innerHTML = "";
-  const t = document.createElement("div");
-  t.className = "toast";
-  t.innerHTML = `
-    <div class="coinBadge"></div>
-    <div>
-      <div class="toastTitleRow">
-        <p class="toastTitle">${mask(pick(names))} received ${pick(amounts)} <span class="tagLive">LIVE</span></p>
-        <p class="toastTime">${now()}</p>
-      </div>
-      <p class="toastSub">Registration completed successfully</p>
-    </div>`;
-  container.appendChild(t);
-  setTimeout(() => { container.innerHTML = ""; }, 3000);
+function updatePopup() {
+  popupText.innerHTML = `${randomName()} just topped up <span class="gold">$50</span> and claimed <span class="gold">$100</span>`;
 }
-setTimeout(showToast, 900);
-setInterval(showToast, 4200);
+
+updatePopup();
+setInterval(updatePopup, 3200);
+
+if (closePopup) {
+  closePopup.addEventListener('click', function(){
+    popup.style.display = 'none';
+  });
+}
 </script>
-
 </body>
 </html>

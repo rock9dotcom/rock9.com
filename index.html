@@ -16,7 +16,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '907356898752528');
-fbq('track', 'PageView', { site: 'site2' });
+fbq('track', 'PageView', { site: 'site1' });
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=907356898752528&ev=PageView&noscript=1"
@@ -270,7 +270,15 @@ h1{
 
 @media(max-width:860px){
   .grid{grid-template-columns:1fr}
-  .poster{max-height:420px}
+  .poster{
+    max-height:none;
+  }
+  .poster img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    display:block;
+  }
   .content{padding:30px 22px}
   .btn{width:100%}
 }
@@ -299,7 +307,7 @@ h1{
       <span class="notification-app">rock-9.com</span>
       <span class="notification-time">now</span>
     </div>
-    <div class="notification-message" id="popupText">Jason just topped up <span class="gold">$100</span> and claimed <span class="gold">$150</span></div>
+    <div class="notification-message" id="popupText">Jason just claimed <span class="gold">$30</span></div>
   </div>
   <button class="close-popup" id="closePopup" aria-label="Close">×</button>
 </div>
@@ -308,18 +316,18 @@ h1{
   <div class="card">
     <div class="grid">
       <div class="poster">
-        <img src="20260904002.png" alt="Rock9 Bonus" />
+        <img src="20260904001.jpg" alt="Rock9 Bonus" />
       </div>
 
       <div class="content">
         <div class="brand">ROCK-9.COM Casino Bonus</div>
 
         <h1 class="headline">
-          <div class="row top"><strong>Deposit &</span></strong></div>
-          <div class="row bottom"><strong>Get <span class="gold big">50% Bonus</span></strong></div>
+          <div class="row top"><strong>Sign Up Now</strong></div>
+          <div class="row bottom"><strong>Get <span class="gold big">$30</span></strong></div>
         </h1>
 
-        <a class="btn" href="https://wa.me/61434844364?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%2050%25%20bonus.%20How%20do%20I%20start%3F" target="_blank" id="claimBtn">
+        <a class="btn" href="https://wa.me/61434844364?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%20%2430%20bonus." target="_blank" id="claimBtn">
           Claim Now
         </a>
 
@@ -330,7 +338,7 @@ h1{
 </div>
 
 <script>
-const whatsappUrl = "https://wa.me/61434844364?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%2050%25%20bonus.%20How%20do%20I%20start%3F";
+const whatsappUrl = "https://wa.me/61434844364?text=Hi%20Rock9%2C%20I%20want%20to%20claim%20the%20%2430%20bonus.";
 document.getElementById('claimBtn').href = whatsappUrl;
 
 const popup = document.getElementById('topPopup');
@@ -348,7 +356,7 @@ function randomName() {
 }
 
 function updatePopup() {
-  popupText.innerHTML = `${randomName()} just claimed <span class="gold">$150</span>`;
+  popupText.innerHTML = `${randomName()} just claimed <span class="gold">$30</span>`;
 }
 
 updatePopup();
